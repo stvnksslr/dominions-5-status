@@ -1,11 +1,12 @@
-FROM ekidd/rust-musl-builder:nightly as dev
-ADD . ./
-RUN sudo chown -R rust:rust .
-RUN cargo build --release
+FROM rust:1.35.0-stretch as build
+ADD . app
+WORKDIR /app
+RUN cargo build --release 
 
-FROM alpine:latest
-WORKDIR /usr/src/myapp
-COPY --from=dev /home/rust/src/target/x86_64-unknown-linux-musl/release/dom5status .
+
+FROM rust:1.35.0-slim-stretch
+WORKDIR /app
+COPY --from=build app/ .
 ENV SSL_CERT_FILE=/etc/ssl/cert.pem
 ENV SSL_CERT_DIR=/etc/ssl/certs
-CMD ["./dom5status"]
+CMD ["./target/release/dom5status"]
