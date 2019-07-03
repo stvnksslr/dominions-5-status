@@ -1,4 +1,4 @@
-FROM rust:1.35.0-stretch as build
+FROM rust:1.35.0-slim-stretch as build
 ADD . app
 WORKDIR /app
 RUN cargo build --release 
