@@ -6,4 +6,7 @@ token
 *.ppk
 *.pem
 
+.vscode
+*.iml
+
 .idea/
