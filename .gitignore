@@ -6,6 +6,8 @@ token
 *.ppk
 *.pem
 
+.DS_Store
+
 .vscode
 *.iml
 
