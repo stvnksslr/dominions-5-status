@@ -1,7 +1,7 @@
 [package]
 name = "dom5status"
-version = "0.1.0"
-authors = ["David McGillicuddy <contact@djmcgill.co.uk>"]
+version = "1.0.0"
+authors = ["Steven kessler <stvnksslr@gmail.com>"]
 edition = "2018"
 
 [dependencies]
