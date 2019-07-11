@@ -21,10 +21,14 @@ RUN rm ./target/release/deps/dom5status*
 RUN cargo build --release
 
 ### RUNNER
-FROM debian:stretch-slim
+FROM debian:stretch
 
+RUN apt-get update && apt-get install openssl -y 
 # copy the build artifact from the build stage
 COPY --from=build /dom5status/target/release/dom5status .
+
+ENV SSL_CERT_FILE=/etc/ssl/cert.pem
+ENV SSL_CERT_DIR=/etc/ssl/certs
 
 # set the startup command to run your binary
 CMD ["./dom5status"]
