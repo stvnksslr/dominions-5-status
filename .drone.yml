@@ -1,3 +1,4 @@
+---
 kind: pipeline
 name: default
 
@@ -7,3 +8,8 @@ steps:
   commands:
   - cargo build --verbose --all
   - cargo test --verbose --all
+---
+kind: signature
+hmac: 903d5389393e26c7603049a02649040e60e6485fcbaa539966a94c2eb19e267d
+
+...
