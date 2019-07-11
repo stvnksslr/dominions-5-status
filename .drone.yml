@@ -3,13 +3,32 @@ kind: pipeline
 name: default
 
 steps:
-- name: test
-  image: rust:1.35
-  commands:
-  - cargo build --verbose --all
-  - cargo test --verbose --all
+  - name: test
+    image: rust:1.35
+    commands:
+      - cargo build --verbose --all
+      - cargo test --verbose --all
+
+  - name: docker
+    image: plugins/docker
+    environment:
+      DOCKER_HUB_LOGIN:
+        from_secret: DOCKER_HUB_LOGIN
+      DOCKERHUB_PASSWORD:
+        from_secret: DOCKER_HUB_PASSWORD
+    settings:
+      username:
+        from_secret: DOCKER_HUB_LOGIN
+      password:
+        from_secret: DOCKER_HUB_PASSWORD
+      repo: stvnksslr/dominions-status
+      auto_tag: true
+    when:
+      branch:
+        - master
+
 ---
 kind: signature
-hmac: 903d5389393e26c7603049a02649040e60e6485fcbaa539966a94c2eb19e267d
+hmac: 4592c8c4911b5c6b1f210ef848c7e33c8866ea83d065ee5053c853e1011ebae7
 
 ...

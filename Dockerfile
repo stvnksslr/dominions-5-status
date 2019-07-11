@@ -21,7 +21,7 @@ RUN rm ./target/release/deps/dom5status*
 RUN cargo build --release
 
 ### RUNNER
-FROM rust:1.35-slim-stretch
+FROM debian:stretch-slim
 
 # copy the build artifact from the build stage
 COPY --from=build /dom5status/target/release/dom5status .
