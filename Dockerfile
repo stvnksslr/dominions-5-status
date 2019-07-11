@@ -21,7 +21,7 @@ RUN rm ./target/release/deps/dom5status*
 RUN cargo build --release
 
 ### RUNNER
-FROM debian:stretch
+FROM debian:stretch-slim
 
 RUN apt-get update && apt-get install openssl -y 
 # copy the build artifact from the build stage
