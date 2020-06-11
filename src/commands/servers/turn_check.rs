@@ -93,7 +93,7 @@ fn update_details_cache_for_game(
                         details
                             .cache_entry
                             .as_ref()
-                            .and_then(|cache_entry| cache_entry.option_snek_state.as_ref())
+                            .and_then(|cache_entry| cache_entry.option_snek_state.as_ref()),
                     ));
                 }
             } else {
