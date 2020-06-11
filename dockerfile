@@ -1,11 +1,11 @@
 ### BUILDER
 FROM rust:1.44.0-buster as build
 
-# create a new empty shell project
+# Create new empty project
 RUN USER=root cargo new --bin dom5status
 WORKDIR /dom5status
 
-# copy over your manifests
+# Copy manifests
 COPY ./Cargo.lock ./Cargo.lock
 COPY ./Cargo.toml ./Cargo.toml
 
@@ -13,7 +13,7 @@ COPY ./Cargo.toml ./Cargo.toml
 RUN cargo build --release
 RUN rm src/*.rs
 
-# copy your source tree
+# Copy source tree
 COPY ./src ./src
 
 RUN rm ./target/release/deps/dom5status*
@@ -22,10 +22,11 @@ RUN cargo build --release
 ### RUNNER
 FROM debian:buster-slim
 
+### Openssl + CA Certs
 RUN apt-get update && apt-get -y install ca-certificates libssl-dev && rm -rf /var/lib/apt/lists/*
 
-# copy the build artifact from the build stage
+# Copy build artifact 
 COPY --from=build /dom5status/target/release/dom5status .
 
-# set the startup command to run your binary
+# Start
 CMD ["./dom5status"]
