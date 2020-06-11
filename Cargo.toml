@@ -1,6 +1,6 @@
 [package]
 name = "dom5status"
-version = "1.0.3"
+version = "1.0.4"
 authors = ["Steven Kessler <stvnksslr@gmail.com>"]
 edition = "2018"
 
