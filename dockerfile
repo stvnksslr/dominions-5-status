@@ -1,5 +1,5 @@
 ### BUILDER
-FROM rust:1.44.0-stretch as build
+FROM rust:1.44.0-buster as build
 
 # create a new empty shell project
 RUN USER=root cargo new --bin dom5status
@@ -20,13 +20,16 @@ RUN rm ./target/release/deps/dom5status*
 RUN cargo build --release
 
 ### RUNNER
-FROM rust:1.44.0-slim-stretch
+FROM debian:buster-slim
 
 ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 ENV SSL_CERT_DIR=/etc/ssl/certs
 ENV RUST_BACKTRACE=1
 
-RUN apt-get update && apt-get install -y --no-install-recommends libssl-dev openssl 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends openssl && \
+    apt-get remove -y gcc && \
+    apt-get -y autoremove
 
 # copy the build artifact from the build stage
 COPY --from=build /dom5status/target/release/dom5status .
