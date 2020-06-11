@@ -1,7 +1,7 @@
 [package]
 name = "dom5status"
-version = "0.1.0"
-authors = ["David McGillicuddy <contact@djmcgill.co.uk>"]
+version = "1.0.2"
+authors = ["Steven Kessler <stvnksslr@gmail.com>"]
 edition = "2018"
 
 [dependencies]
@@ -23,10 +23,13 @@ reqwest = "0.9.18"
 rusqlite = {version = "0.17.*", features = ["bundled", "trace"]}
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-serenity = "0.5.11"
+serenity = "0.5.14"
 simplelog = "^0.4.4"
 typemap = "0.3"
 url = "1.7.*"
 
 [dev-dependencies]
 color-backtrace = { version = "0.2" }
+
+[patch.crates-io]
+openssl = { git = "https://github.com/ishitatsuyuki/rust-openssl", branch = "0.9.x" }

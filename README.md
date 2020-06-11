@@ -1,4 +1,5 @@
-[![CircleCI](https://circleci.com/gh/djmcgill/dominions-5-status/tree/master.svg?style=svg)](https://circleci.com/gh/djmcgill/dominions-5-status/tree/master)
+[![Actions Status](https://github.com/stvnksslr/dominions-5-status/workflows/Build/badge.svg)](https://github.com/stvnksslr/dominions-5-status/actions)
+[![Actions Status](https://github.com/stvnksslr/dominions-5-status/workflows/Deploy/badge.svg)](https://github.com/stvnksslr/dominions-5-status/actions)
 
 # Dominions 5 Discord Bot
 A discord bot containing utilities for dominions 5

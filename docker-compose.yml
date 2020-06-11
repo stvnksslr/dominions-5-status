@@ -1,7 +1,0 @@
-version: "3"
-
-services:
-  stvnksslr:
-    container_name: dom5bot
-    build: .
-    image: stvnksslr/dom5bot
